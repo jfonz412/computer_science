@@ -1,4 +1,4 @@
-# REFACTORED UNTIL ===
+# REFACTORED UNTIL "==="" 
 
 class Node
   attr_reader :left_child, :right_child, :value
@@ -20,7 +20,6 @@ class Node
       @right_child = Node.new(value) if @right_child == nil
     end
   end
-
 end
 
 def build_tree(array)
@@ -54,16 +53,18 @@ def breadth_first_search(root,target)
   end
 end
 
-#NO IDEA WHY THIS DOESN'T WORK. IT PRINTS THE CORRECT NODE BUT ONLY RETURNS NIL
 def depth_first_search(node,target) 
   return nil if node.nil?
-  p node if node.value == target
+  return node if node.value == target
 
   left = node.left_child
   right = node.right_child
   
   left_results = depth_first_search(left, target) unless left.nil?
   right_results = depth_first_search(right, target) unless right.nil?
+
+  return left_results if left_results!=nil
+  return right_results if right_results!=nil
 end
 
 #RANDOMIZED ARRAY
